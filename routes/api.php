@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\UserLoginController;
 use App\Http\Controllers\Auth\UserRegisterController;
 use App\Http\Controllers\EventController;
@@ -23,6 +24,8 @@ Route::prefix('/user')->group(function () {
 });
 
 Route::group(['middleware' => ['jwt.auth']], function () {
+    Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
+
     Route::prefix('/event')->group(function () {
         Route::post('create', [EventController::class, 'store'])->name('create');
         Route::get('show', [EventController::class, 'show'])->name('show');
