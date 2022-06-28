@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateEventRequest;
+use App\Http\Requests\EventUpdaterequest;
 use App\Http\Resources\EventResource;
 use App\Models\Event;
 use Carbon\Carbon;
@@ -33,5 +34,23 @@ class EventController extends Controller
         $events = Auth::user()->events;
 
         return JSON(CODE_SUCCESS, "Events retrieved successfully.", EventResource::collection($events));
+    }
+
+    public function update(EventUpdaterequest $request, Event $event)
+    {
+        $updated_event = $event->update([
+            'name' => ($request->name) ?? $event->name,
+            'location' => ($request->location) ?? $event->location,
+            'type' => ($request->type) ?? $event->type,
+            'price' => ($request->price) ?? $event->price,
+            'status' => ($request->status) ?? $event->status,
+            'description' => ($request->description) ?? $event->description,
+            'slots' => ($request->slots) ?? $event->slots,
+            'date' => Carbon::parse(($request->date) ?? $event->date),
+        ]);
+
+        abort_if(!$updated_event, CODE_BAD_REQUEST, "Unable to update event. Plesae try again");
+
+        return JSON(CODE_SUCCESS, "Events has been updated successfully.", new EventResource($event));
     }
 }

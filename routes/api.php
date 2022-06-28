@@ -25,5 +25,6 @@ Route::group(['middleware' => ['jwt.auth']], function () {
     Route::prefix('/event')->group(function () {
         Route::post('create', [EventController::class, 'store'])->name('create');
         Route::get('show', [EventController::class, 'show'])->name('show');
+        Route::patch('update/{event}', [EventController::class, 'update'])->name('update');
     });
 });
