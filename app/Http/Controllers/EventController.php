@@ -27,4 +27,11 @@ class EventController extends Controller
 
         return JSON(CODE_CREATED, 'Event created successfully', new EventResource($event));
     }
+
+    public function show()
+    {
+        $events = Auth::user()->events;
+
+        return JSON(CODE_SUCCESS, "Events retrieved successfully.", EventResource::collection($events));
+    }
 }
