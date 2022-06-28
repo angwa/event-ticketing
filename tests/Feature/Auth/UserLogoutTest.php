@@ -20,7 +20,7 @@ class UserLogoutTest extends TestCase
         $response->assertStatus(401);
     }
 
-    public function testUserCanNotLoginWithToken()
+    public function testUserCanLoginWithToken()
     {
         $response =  $this->get('/api/logout', $this->activeUser());
 
