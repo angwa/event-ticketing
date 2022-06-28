@@ -26,7 +26,7 @@ class AddTypeToEventsTable extends Migration
     public function down()
     {
         Schema::table('events', function (Blueprint $table) {
-            Schema::dropColumns('type');
+            $table->dropColumn('type');
         });
     }
 }
