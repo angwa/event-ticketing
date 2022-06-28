@@ -20,6 +20,6 @@ class TicketController extends Controller
 
         abort_if(!$ticket, CODE_BAD_REQUEST, 'Unable to create ticket. Please try again');
 
-        return JSON(CODE_SUCCESS, "Ticket has been booked successfully.", new TicketResource($ticket));
+        return JSON(CODE_CREATED, "Ticket has been booked successfully.", new TicketResource($ticket));
     }
 }
