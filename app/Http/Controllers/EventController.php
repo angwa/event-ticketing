@@ -58,6 +58,7 @@ class EventController extends Controller
 
         return JSON(CODE_SUCCESS, "Events has been updated successfully.", new EventResource($event));
     }
+
     public function delete(Event $event)
     {
         if (!Gate::allows('event-owner', $event)) {
@@ -69,5 +70,12 @@ class EventController extends Controller
         abort_if(!$delete_event, CODE_BAD_REQUEST, "Unable to delete event. Plesae try again");
 
         return JSON(CODE_SUCCESS, "Events has been deleted successfully.");
+    }
+
+    public function showAll()
+    {
+        $events = Event::paginate(10);
+
+        return JSON(CODE_SUCCESS, "All events retrieved successfully.", EventResource::collection($events));
     }
 }
