@@ -3,7 +3,7 @@
 use Illuminate\Support\Str;
 
 $host = "us-cdbr-east-05.cleardb.net";
-$username = "bbb3cdb45b37ef:";
+$username = "bbb3cdb45b37ef";
 $password = "cec29b08";
 $database = "heroku_e6e440de8b3adaa";
 
