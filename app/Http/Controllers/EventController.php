@@ -18,6 +18,7 @@ class EventController extends Controller
             'name' => $request->name,
             'location' => $request->location,
             'type' => $request->type,
+            'price' => ($request->price) ?? 0,
             'status' => ($request->status) ?? 'active',
             'description' => $request->description,
             'slots' => $request->slots,
