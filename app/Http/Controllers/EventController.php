@@ -39,7 +39,7 @@ class EventController extends Controller
 
     public function update(EventUpdaterequest $request, Event $event)
     {
-        if (!Gate::allows('update-event', $event)) {
+        if (!Gate::allows('event-owner', $event)) {
             abort(CODE_FORBIDDEN, "You dont have permission to update this event");
         }
 
@@ -57,5 +57,17 @@ class EventController extends Controller
         abort_if(!$updated_event, CODE_BAD_REQUEST, "Unable to update event. Plesae try again");
 
         return JSON(CODE_SUCCESS, "Events has been updated successfully.", new EventResource($event));
+    }
+    public function delete(Event $event)
+    {
+        if (!Gate::allows('event-owner', $event)) {
+            abort(CODE_FORBIDDEN, "You dont have permission to delete this event");
+        }
+
+        $delete_event = $event->delete();
+
+        abort_if(!$delete_event, CODE_BAD_REQUEST, "Unable to delete event. Plesae try again");
+
+        return JSON(CODE_SUCCESS, "Events has been deleted successfully.");
     }
 }
