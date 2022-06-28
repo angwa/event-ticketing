@@ -6,6 +6,7 @@ use App\Http\Requests\CreateEventRequest;
 use App\Http\Requests\EventUpdaterequest;
 use App\Http\Resources\EventResource;
 use App\Models\Event;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -35,6 +36,13 @@ class EventController extends Controller
         $events = Auth::user()->events;
 
         return JSON(CODE_SUCCESS, "Events retrieved successfully.", EventResource::collection($events));
+    }
+
+    public function showForUser(User $user)
+    {
+        $events = $user->events;
+
+        return JSON(CODE_SUCCESS, "Events retrieved successfully for a user.", EventResource::collection($events));
     }
 
     public function update(EventUpdaterequest $request, Event $event)
