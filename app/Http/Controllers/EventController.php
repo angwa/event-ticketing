@@ -8,6 +8,7 @@ use App\Http\Resources\EventResource;
 use App\Models\Event;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class EventController extends Controller
 {
@@ -38,6 +39,10 @@ class EventController extends Controller
 
     public function update(EventUpdaterequest $request, Event $event)
     {
+        if (! Gate::allows('update-event', $event)) {
+            abort(CODE_FORBIDDEN, "You dont have permission to update this event");
+        }
+        
         $updated_event = $event->update([
             'name' => ($request->name) ?? $event->name,
             'location' => ($request->location) ?? $event->location,
