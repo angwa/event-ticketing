@@ -39,10 +39,10 @@ class EventController extends Controller
 
     public function update(EventUpdaterequest $request, Event $event)
     {
-        if (! Gate::allows('update-event', $event)) {
+        if (!Gate::allows('update-event', $event)) {
             abort(CODE_FORBIDDEN, "You dont have permission to update this event");
         }
-        
+
         $updated_event = $event->update([
             'name' => ($request->name) ?? $event->name,
             'location' => ($request->location) ?? $event->location,
