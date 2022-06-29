@@ -9,13 +9,13 @@ Clone this project and run command
 composer install
 ```
 
-Then  Configure your database variables in the .env file and run
+Configure your database variables in the .env file and run
 After wards, run 
 ```
 php artisan optimize
 ```
+Then run
 ```
-Then
 php artisan migrate
 
 ```
