@@ -9,18 +9,19 @@ Clone this project and run command
 composer install
 ```
 
-After wards, run 
-```php artisan optimize
-```
-
 Then  Configure your database variables in the .env file and run
-
+After wards, run 
 ```
+php artisan optimize
+```
+```
+Then
 php artisan migrate
 
 ```
-And 
-```php artisan serve
+And  finally
+```
+php artisan serve
 ```
 To start your application
 ### Prototype Demo (base Url)
