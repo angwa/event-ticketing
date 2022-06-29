@@ -1,64 +1,109 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Learning project
+This is an API built with PHP Laravel for event creation and ticketing.
+## Download and Usage
 
-## About Laravel
+Clone this project and run command
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+```
+composer install
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+After wards, run 
+```php artisan optimize
+```
+### Prototype Demo (base Url)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **[https://angwa-event-ticketing.herokuapp.com/api/](https://angwa-event-ticketing.herokuapp.com/api/)**
 
-## Learning Laravel
+Using the endpoint above, the following endpoints can be accessed directly on the API
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+USER AUTHENTICATION ENDPOINTS
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+ID
+ACTIVITY
+ENDPOINT
+1
+Account signup
+{{BASE_URL}}/user/create
+2
+Account signin
+{{BASE_URL}}/user/login
+3
+Logout
+{{BASE_URL}}/logout
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
+EVENT WORKFLOW
+The following endpoints require authorization. The bearer token is used. So provide the bearer token generated during login to access the endpoints.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
 
-## Contributing
+1
+Create Event
+{{BASE_URL}}/event/create
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+2
+Show Logged User events
+{{BASE_URL}}/event/show
 
-## Code of Conduct
+3
+Show specific user events
+{{BASE_URL}}/event/show/{user_id}
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4
+Show all events
+{{BASE_URL}}/event/all
 
-## Security Vulnerabilities
+5
+Update Event
+{{BASE_URL}}/event/update/{event_id}
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+6
+Delete Event
+{{BASE_URL}}/event/delete/{event_id}
+
+7
+Create Ticket
+{{BASE_URL}}/ticket/create
+
+
+ACCOUNT CREATION PAYLOAD
+{
+   "name":"Angwa moses",
+   "email":"angwamoses@gmail.com",
+   "password":"12345678",
+   "password_confirmation":"12345678"
+}
+
+USER LOGIN PAYLOAD
+{
+   "email":"angwamoses@gmail.com",
+   "password":"12345678"
+}
+
+
+EVENT CREATION PAYLOAD
+{
+   "name":"Otakom Traditional marraie",
+   "location":"Flat 4, Johnson ogede way, Benue State",
+   "description":"They will be joined together in holy matrimoy",
+   "date":"03.05.2022",
+   "type":"paid",
+   "price":400,
+   "slots":22,
+   "status":"inactive"
+}
+ 
+NOTE: slot, price  and status are optional fields.
+ 
+CRAETE TICKET PAYLOAD
+{
+   "event_id":1,
+   "slot":2
+}
+ 
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
