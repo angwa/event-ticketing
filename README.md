@@ -20,15 +20,14 @@ Using the endpoint above, the following endpoints can be accessed directly on th
 
 USER AUTHENTICATION ENDPOINTS
 
-ID
-ACTIVITY
-ENDPOINT
 1
 Account signup
 {{BASE_URL}}/user/create
+
 2
 Account signin
 {{BASE_URL}}/user/login
+
 3
 Logout
 {{BASE_URL}}/logout
@@ -69,21 +68,25 @@ Create Ticket
 
 
 ACCOUNT CREATION PAYLOAD
+```
 {
    "name":"Angwa moses",
    "email":"angwamoses@gmail.com",
    "password":"12345678",
    "password_confirmation":"12345678"
 }
-
+```
 USER LOGIN PAYLOAD
+```
 {
    "email":"angwamoses@gmail.com",
    "password":"12345678"
 }
-
+```
 
 EVENT CREATION PAYLOAD
+
+```
 {
    "name":"Otakom Traditional marraie",
    "location":"Flat 4, Johnson ogede way, Benue State",
@@ -94,14 +97,17 @@ EVENT CREATION PAYLOAD
    "slots":22,
    "status":"inactive"
 }
+```
  
 NOTE: slot, price  and status are optional fields.
  
 CRAETE TICKET PAYLOAD
+```
 {
    "event_id":1,
    "slot":2
 }
+```
  
 
 ## License
