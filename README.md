@@ -12,6 +12,17 @@ composer install
 After wards, run 
 ```php artisan optimize
 ```
+
+Then  Configure your database variables in the .env file and run
+
+```
+php artisan migrate
+
+```
+And 
+```php artisan serve
+```
+To start your application
 ### Prototype Demo (base Url)
 
 - **[https://angwa-event-ticketing.herokuapp.com/api/](https://angwa-event-ticketing.herokuapp.com/api/)**
@@ -26,6 +37,7 @@ Account signup
 
 2
 Account signin
+
 {{BASE_URL}}/user/login
 
 3
